@@ -1,0 +1,102 @@
+{% extends 'main/base.html' %} {% block menubar %}
+
+<!-- Logo -->
+<div id="logo" class="col-md-6 force_up">
+  <h1><a href="index.html">Welcome{% if user.is_authenticated %}, {{user.profile.first}}{% endif %}</a></h1>
+  <select id="category_bar" class="js-example-basic-single" style="width: 50%; background:#f4f4f4; line-height: 100px;">
+            <option></option>
+            {% for skill in skills %}
+              <option value="{{skill}}">{{skill}}</option>
+            {% endfor %}
+          </select>
+  <br>
+  <input id="level_of_expertise_slider" data-slider-id="slider" type="text" data-provide="slider" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="5">
+
+  <ul class="actions">
+    <li><a href="#" class="search_button button style3 big">Search</a></li>
+  </ul>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".js-example-basic-single").select2({
+        placeholder: "What would you like to learn today?"
+      });
+
+      $('#level_of_expertise_slider').slider({
+        formatter: function(level) {
+          return level;
+        }
+      });
+    });
+
+    $(document).on('click', '.search_button', function() {
+      var e = document.getElementById("category_bar");
+      var category = e.options[e.selectedIndex].text;
+      // String category = (document.getElementById("").value).toString();
+      var value = document.getElementById("level_of_expertise_slider").value;
+      window.location.href = '/search/' + category + '/' + value + '/';
+    });
+  </script>
+</div>
+
+{% endblock %} {% block content %}
+
+<!-- Intro -->
+<div class="wrapper style2">
+  <div class="title">About Us</div>
+  <div id="main" class="container">
+
+    <!-- Image -->
+    <a href="#" class="image featured">
+        <img src="images/pic01.jpg" alt="" />
+      </a>
+
+    <!-- Features -->
+    <section id="features">
+      <header class="style1">
+        <h1 class="company_title">Skills Skool</h1>
+        <p class="motto">Any study, any time</p>
+        <h1>In today’s economy, we share our cars, we share our social lives, and we even share our homes. So we at Skill Skool say, why not share our knowledge? Welcome to our platform, a peer-to-peer network where anyone can share their knowledge with another curious user.</h1>
+      </header>
+      <div class="feature-list">
+        <div class="row">
+          <div class="6u 12u(mobile)">
+            <section>
+              <img src="/static/images/icon1.png">
+              <h3 class="">Visit the site when you want to know something now</h3>
+            </section>
+          </div>
+          <div class="6u 12u(mobile)">
+            <section>
+              <h3 class=""><img src="/static/images/icon2.png">
+                <h3 class="">Search for a user who is an expert in the field you seek to learn about, as well as the level of expertise you wish your advisor.</h3>
+            </section>
+          </div>
+        </div>
+        <div class="row">
+          <div class="6u 12u(mobile)">
+            <section>
+              <h3 class=""><img src="/static/images/icon3.png">
+                <h3 class="">Chat with your paired expert about your doubts.</h3>
+            </section>
+          </div>
+          <div class="6u 12u(mobile)">
+            <section>
+              <h3 class=""><img src="/static/images/icon4.png">
+                <h3 class="">Use your newly gained knowledge and visit again when you have another immediate doubt.
+                </h3>
+            </section>
+          </div>
+        </div>
+      </div>
+      <ul class="actions actions-centered">
+        <li><a href="{% url 'signup' %}" class="button style1 big">Register</a></li>
+      </ul>
+    </section>
+    <br>
+    <br>
+    <br>
+  </div>
+</div>
+
+{%endblock%}

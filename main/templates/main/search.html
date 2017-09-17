@@ -1,0 +1,34 @@
+{% extends 'main/base.html' %} {% load custom_tags %} {% block menubar %}
+<div class="row tableHolder">
+  <div class="col-md-12 col-centered">
+    <table class="tableformatter">
+      <tr style="width:100%">
+        <th colspan="3" class="tablehead">Search: {{category}} | Level of Expertise: {{value}}</th>
+      </tr>
+      <tr class="tableFirst">
+        <td>Name:</td>
+        <td>Experience Level:</td>
+        <td>Online:</td>
+      </tr>
+      {% for user in users_found %}
+      <tr>
+        <td><a class="tableLink" href="/chatting/{{ user.first}}/">{{ user.first}} {{ user.last}}</a></td>
+        <td>{{ user.fields_of_expertise|level:category}}</td>
+        <td>{{ user.onlineBool}}</td>
+      </tr>
+      {% empty %}
+      <tr></tr>
+      <tr></tr>
+      <tr></tr>
+      <tr>
+        <td colspan="3"><h3>Unfortunately, no one can teach you in {{category}} who is a {{value}} or above</h3>
+          <a href="{% url 'main' %}" style="color:#0b29a6">Try something new?</h3>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+
+
+  </div>
+</div>
+{% endblock %}

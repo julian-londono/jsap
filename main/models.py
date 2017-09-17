@@ -16,6 +16,8 @@ class Profile(models.Model):
     hours_taught = models.IntegerField(default=0)
     ratingsArray = ArrayField(models.IntegerField(default=0),null=True)
     avg_rating = models.DecimalField(max_digits=4, decimal_places=2, default=0.00, null=True)
+    text = ArrayField(models.TextField(null=True),null=True)
+    onlineBool = models.BooleanField(default=True)
 
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):

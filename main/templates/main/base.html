@@ -1,0 +1,89 @@
+{% load staticfiles %}
+<!DOCTYPE HTML>
+<!--
+	Escape Velocity by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+  <title>Skill Skool</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--[if lte IE 8]><script src="js/ie/html5shiv.js"></script><![endif]-->
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/jquery.dropotron.min.js' %}"></script>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.7.2/css/bootstrap-slider.min.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.7.2/bootstrap-slider.min.js"></script>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!--[if lte IE 8]><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
+
+<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+
+  <link rel="icon" href="{% static 'images/favicon.ico' %}">
+</head>
+
+<div id="header-wrapper" class="wrapper">
+  <div id="header" class="removeBottom">
+
+    <!-- Nav -->
+
+    <nav id="nav">
+      <div class="logo_holder"><img class="logo" src="{% static 'images/logo.png'%}"></div>
+      <ul>
+        <li class="current"><a href="{% url 'main' %}">Home</a></li>
+        <li><a href="{% url 'main' %}">Teach</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+        <li><span><a href="{% url 'login' %}">Login</a>/<a href="{% url 'signup' %}">Signup</a></span></li>
+        {% endif %}
+
+      </ul>
+
+
+
+    </nav>
+    {% block menubar %} {% endblock %}
+
+  </div>
+</div>
+
+<body class="homepage">
+  <div id="page-wrapper">
+    {% block content %} {% endblock %}
+  </div>
+
+  <!-- <div id="footer-wrapper" class="wrapper">
+    <div id="copyright">
+      <ul>
+        <li>&copy; SHALIN MEHTA, JULIAN LONDONO, PRANAV DARBHA, ANDREW ZHANG</li>
+      </ul>
+    </div>
+  </div> -->
+
+  <!-- Scripts -->
+
+
+  <script src="{% static 'js/skel.min.js' %}"></script>
+  <script src="{% static 'js/skel-viewport.min.js' %}"></script>
+  <script src="{% static 'js/util.js' %}"></script>
+  <!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
+  <script src="{% static 'js/main.js' %}"></script>
+  <!-- <script src="{% static 'js/init.js' %}"></script> -->
+
+</body>
+
+</html>

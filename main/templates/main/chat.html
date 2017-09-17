@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %} {% load custom_tags %} {% block menubar %}
+
+<div id="intro-wrapper" class="wrapper chatwrap style1 profile_spacer">
+  <div class="title">Chatting with {{user.first}}</div>
+  <section id="intro" class="container">
+
+    <iframe src="http://deadsimplechat.com/+z2JQ9" frameborder="0" width="800px" height="600px"></iframe>
+
+    <ul class="actions">
+      <li><a href="{% url 'main' %}" class="chatbutton button style3 big">End</a></li>
+    </ul>
+
+  </section>
+</div>
+
+{% endblock %}
